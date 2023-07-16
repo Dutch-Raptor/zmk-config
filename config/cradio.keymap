@@ -23,6 +23,15 @@
             label = "QUICK_TAP";
             bindings = <&kp>, <&kp>;
         };
+        hmr: home-row-mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <500>;
+            quick-tap-ms = <125>;
+            label = "HOME_ROW_MODS";
+            bindings = <&kp>, <&kp>;
+        };
         sk {
             quick-release;
             ignore-modifiers;
@@ -38,7 +47,7 @@
             &kp Y      &kp C      &kp L      &kp M      &kp K          &kp Z      &kp F      &kp U      &kp COMMA   &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  I       │  S       │  R       │  T       │  G       │   │  P       │  N       │  E       │  A       │  O       │
-            &kp I      &kp S    &qt LALT R  &qt LGUI T   &kp G          &kp P    &qt RGUI N &qt RALT E  &kp A      &kp O
+            &kp I      &kp S    &hmr LALT R &hmr LGUI T  &kp G          &kp P   &hmr RGUI N &hmr RALT E  &kp A      &kp O
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  V       │  W       │  D       │  J       │  Q       │   │  B       │  H       │ / ?      │ . >      │  X       │
             &kp V      &kp W      &kp D      &kp J      &kp Q          &kp B      &kp H      &kp FSLH   &kp DOT    &kp X

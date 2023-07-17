@@ -63,8 +63,8 @@
         //│ ESC      │  @       │ \#       │  $       │ %        │   │ ^        │ &        │ *        │ ;        │  BCKSPC  │
             &kp ESC    &kp AT     &kp HASH  &kp DOLLAR &kp PERCENT     &kp CARET  &kp AMPS   &kp ASTRK  &kp SEMI   &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ TAB      │  =       │          │  `       │ '        │   │'\\'/HOME │ {        │ }        │ '|'/END  │  ENTER   │
-            &kp TAB    &kp EQUAL  &trans     &kp GRAVE  &kp SQT        BSLHHOME  &kp LBRC   &kp RBRC    PIPEEND   &kp ENTER
+        //│ TAB      │  =       │  !       │  `       │ '        │   │'\\'/HOME │ {        │ }        │ '|'/END  │  ENTER   │
+            &kp TAB    &kp EQUAL  &kp EXCL   &kp GRAVE  &kp SQT        BSLHHOME  &kp LBRC   &kp RBRC    PIPEEND   &kp ENTER
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│ CAPS     │          │          │          │  "       │   │ [        │ (        │ )        │ ]        │  L3      │
            &caps_word  &trans     &trans     &trans     &kp DQT        &kp LBKT   &kp LPAR   &kp RPAR  &kp RBKT    &to 3

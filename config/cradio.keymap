@@ -66,8 +66,8 @@
         //│ TAB      │  =       │  !       │  `       │ '        │   │'\\'/HOME │ {        │ }        │ '|'/END  │  ENTER   │
             &kp TAB    &kp EQUAL  &kp EXCL   &kp GRAVE  &kp SQT        BSLHHOME  &kp LBRC   &kp RBRC    PIPEEND   &kp ENTER
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ CAPS     │          │          │          │  "       │   │ [        │ (        │ )        │ ]        │  L3      │
-           &caps_word  &trans     &trans     &trans     &kp DQT        &kp LBKT   &kp LPAR   &kp RPAR  &kp RBKT    &to 3
+        //│ CAPS     │  -       │  +       │          │  "       │   │ [        │ (        │ )        │ ]        │  L3      │
+           &caps_word  &kp MINUS  &kp PLUS   &none      &kp DQT        &kp LBKT   &kp LPAR   &kp RPAR  &kp RBKT    &to 3
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &to 0      &sk LSHFT      &sk LCTRL   &to 2
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
@@ -83,8 +83,8 @@
         //│  !       │  . (KP)  │  VOLDWN  │  VOLUP   │  +       │   │  *       │  4       │  5       │  6       │  ENTER   │
             &kp EXCL &kp KP_DOT &kp C_VOL_DN &kp C_VOL_UP &kp PLUS     &kp ASTRK  &kp N4     &kp N5     &kp N6   &kp ENTER
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │  BRIDWN  │  BRIUP   │  !       │   │  0       │  1       │  2       │  3       │  L3      │
-            &trans     &trans  &kp C_BRI_DN &kp C_BRI_UP &kp EXCL      &kp N0     &kp N1     &kp N2     &kp N3     &to 3
+        //│ CAPS     │          │  BRIDWN  │  BRIUP   │  !       │   │  0       │  1       │  2       │  3       │  L3      │
+            &kp CAPS   &trans  &kp C_BRI_DN &kp C_BRI_UP &kp EXCL      &kp N0     &kp N1     &kp N2     &kp N3     &to 3
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &to 0      &sk LSHFT      &sk LCTRL     &none
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯

@@ -36,6 +36,15 @@
             quick-release;
             ignore-modifiers;
         };
+        lts: layer-tap-switch {
+                compatible = "zmk,behavior-hold-tap";
+                #binding-cells = <2>;
+                flavor = "tap-preferred";
+                tapping-term-ms = <200>;
+                quick-tap-ms = <125>;
+                label = "LAYER_TAP_SWITCH";
+                bindings = <&mo>, <&to>;
+        };
     };
 
     keymap {
@@ -47,27 +56,29 @@
             &kp Y      &kp C      &kp L      &kp M      &kp K          &kp Z      &kp F      &kp U      &kp COMMA   &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  I       │  S       │  R       │  T       │  G       │   │  P       │  N       │  E       │  A       │  O       │
-            &kp I      &kp S    &hmr LALT R &hmr LGUI T  &kp G          &kp P   &hmr RGUI N &hmr RALT E  &kp A      &kp O
+            &kp I      &kp S    &hmr LALT R &hmr LGUI T  &kp G          &kp P   &hmr RGUI N &hmr RALT E &kp A      &kp O
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  V       │  W       │  D       │  J       │  Q       │   │  B       │  H       │ / ?      │ . >      │  X       │
+        //│  V       │  W       │  D       │  J       │  Q       │   │  B       │  H       │ / ?      │  . >     │  X       │
             &kp V      &kp W      &kp D      &kp J      &kp Q          &kp B      &kp H      &kp FSLH   &kp DOT    &kp X
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                          &qt MEH SPACE  &sk LSHFT     &sk LCTRL  &to 1
+                                          &qt MEH SPACE  &sk LSHFT     &sk LCTRL  &lts 2 1
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
 
+        
+
         layer_1 {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│ ESC      │  @       │ \#       │  $       │ %        │   │ ^        │ &        │ *        │ ;        │  BCKSPC  │
-            &kp ESC    &kp AT     &kp HASH  &kp DOLLAR &kp PERCENT     &kp CARET  &kp AMPS   &kp ASTRK  &kp SEMI   &kp BSPC
+        //│ ESC      │  "       │ [        │  ]       │ '\'/HOME │   │ =        │ &        │ *        │ ;        │  BCKSPC  │
+            &kp ESC    &kp DQT     &kp LBKT  &kp RBKT   BSLHHOME       &kp EQUAL  &kp AMPS   &kp ASTRK  &kp SEMI   &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ TAB      │  =       │  !       │  `       │ '        │   │'\\'/HOME │ {        │ }        │ '|'/END  │  ENTER   │
-            &kp TAB    &kp EQUAL  &kp EXCL   &kp GRAVE  &kp SQT        BSLHHOME  &kp LBRC   &kp RBRC    PIPEEND   &kp ENTER
+        //│ TAB      │  '       │  {       │  }       │          │   │ -        │ $        │ %        │ ^        │  ENTER   │
+            &kp TAB    &kp SQT    &kp LBRC   &kp RBRC   &none          &kp MINUS  &kp DLLR  &kp PERCENT &kp CARET  &kp ENTER
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ CAPS     │  -       │  +       │          │  "       │   │ [        │ (        │ )        │ ]        │  L3      │
-           &caps_word  &kp MINUS  &kp PLUS   &none      &kp DQT        &kp LBKT   &kp LPAR   &kp RPAR  &kp RBKT    &to 3
+        //│ CAPS     │  `       │  (       │  )       │ '|'/END  │   │ _        │ !        │ @        │ \#       │  L3      │
+           &caps_word  &kp GRAVE  &kp LPAR   &kp RPAR   PIPEEND        &kp UNDER  &kp EXCL  &kp AT      &kp HASH   &to 3
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &to 0      &sk LSHFT      &sk LCTRL   &to 2
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯

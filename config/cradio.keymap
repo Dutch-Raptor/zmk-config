@@ -72,13 +72,13 @@
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│ ESC      │  "       │ [        │  ]       │ '\'/HOME │   │ =        │ &        │ *        │ ;        │  BCKSPC  │
-            &kp ESC    &kp DQT     &kp LBKT  &kp RBKT   BSLHHOME       &kp EQUAL  &kp AMPS   &kp ASTRK  &kp SEMI   &kp BSPC
+            &kp ESC    &kp DQT    &kp LBKT   &kp RBKT   BSLHHOME       &kp EQUAL  &kp AMPS   &kp ASTRK  &kp SEMI   &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ TAB      │  '       │  {       │  }       │          │   │ -        │ $        │ %        │ ^        │  ENTER   │
-            &kp TAB    &kp SQT    &kp LBRC   &kp RBRC   &none          &kp MINUS  &kp DLLR  &kp PERCENT &kp CARET  &kp ENTER
+        //│ TAB      │  '       │  (       │  )       │          │   │ -        │ $        │ %        │ ^        │  ENTER   │
+            &kp TAB    &kp SQT    &kp LPAR   &kp RPAR   &none          &kp MINUS  &kp DLLR  &kp PERCENT &kp CARET  &kp ENTER
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ CAPS     │  `       │  (       │  )       │ '|'/END  │   │ _        │ !        │ @        │ \#       │  L3      │
-           &caps_word  &kp GRAVE  &kp LPAR   &kp RPAR   PIPEEND        &kp UNDER  &kp EXCL  &kp AT      &kp HASH   &to 3
+        //│ CAPS     │  `       │  {       │  }       │ '|'/END  │   │ _        │ !        │ @        │ \#       │  L3      │
+           &caps_word  &kp GRAVE  &kp LBRC   &kp RBRC   PIPEEND        &kp UNDER  &kp EXCL  &kp AT      &kp HASH   &to 3
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &to 0      &sk LSHFT      &sk LCTRL   &to 2
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯

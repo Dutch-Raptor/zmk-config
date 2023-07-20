@@ -10,6 +10,8 @@
 
 # define BSLHHOME &qt HOME BSLH
 # define PIPEEND &qt END PIPE
+# define CA(x) &kp LC(LA(x))
+
 
 
 / {
@@ -19,16 +21,25 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            quick-tap-ms = <125>;
+            quick-tap-ms = <175>;
             label = "QUICK_TAP";
             bindings = <&kp>, <&kp>;
+        };
+        qlt: quick-layer-tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            label = "QUICK_TAP";
+            bindings = <&mo>, <&kp>;
         };
         hmr: home-row-mods {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <400>;
-            quick-tap-ms = <125>;
+            quick-tap-ms = <175>;
             label = "HOME_ROW_MODS";
             bindings = <&kp>, <&kp>;
         };
@@ -41,9 +52,16 @@
                 #binding-cells = <2>;
                 flavor = "tap-preferred";
                 tapping-term-ms = <200>;
-                quick-tap-ms = <125>;
+                quick-tap-ms = <175>;
                 label = "LAYER_TAP_SWITCH";
                 bindings = <&mo>, <&to>;
+        };
+    };
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <1 2>;
+            then-layer = <4>;
         };
     };
 
@@ -61,12 +79,10 @@
         //│  V       │  W       │  D       │  J       │  Q       │   │  B       │  H       │ / ?      │  . >     │  X       │
             &kp V      &kp W      &kp D      &kp J      &kp Q          &kp B      &kp H      &kp FSLH   &kp DOT    &kp X
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                          &qt MEH SPACE  &sk LSHFT     &sk LCTRL  &lts 2 1
+                                          &qlt 2 SPACE  &sk LSHFT     &sk LCTRL  &lts 1 1
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
-
-        
 
         layer_1 {
             bindings = <
@@ -74,18 +90,97 @@
         //│ ESC      │  "       │ [        │  ]       │ '\'/HOME │   │ =        │ &        │ *        │ ;        │  BCKSPC  │
             &kp ESC    &kp DQT    &kp LBKT   &kp RBKT   BSLHHOME       &kp EQUAL  &kp AMPS   &kp ASTRK  &kp SEMI   &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ TAB      │  '       │  (       │  )       │          │   │ -        │ $        │ %        │ ^        │  ENTER   │
-            &kp TAB    &kp SQT    &kp LPAR   &kp RPAR   &none          &kp MINUS  &kp DLLR  &kp PERCENT &kp CARET  &kp ENTER
+        //│ TAB      │  '       │  (       │  )       │ +        │   │ -        │ $        │ %        │ ^        │  ENTER   │
+            &kp TAB    &kp SQT    &kp LPAR   &kp RPAR   &kp PLUS       &kp MINUS  &kp DLLR  &kp PERCENT &kp CARET  &kp ENTER
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│ CAPS     │  `       │  {       │  }       │ '|'/END  │   │ _        │ !        │ @        │ \#       │  L3      │
            &caps_word  &kp GRAVE  &kp LBRC   &kp RBRC   PIPEEND        &kp UNDER  &kp EXCL  &kp AT      &kp HASH   &to 3
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &to 0      &sk LSHFT      &sk LCTRL   &to 2
+                                             &lts 2 0      &sk LSHFT   &sk LCTRL  &lts 1 2
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
 
+
         layer_2 {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│  ESC     │play/pause│  <<      │  >>      │  -       │   │  ^       │  7       │  8       │  9       │  BCKSPC  │
+            &kp ESC    &kp C_PP  &kp C_PREV &kp C_NEXT  &kp MINUS      &kp CARET  &kp N7     &kp N8     &kp N9     &kp BSPC
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  TAB     │  . (KP)  │  VOLDWN  │  VOLUP   │  +       │   │  *       │  4       │  5       │  6       │  ENTER   │
+            &kp TAB    &kp KP_DOT &kp C_VOL_DN &kp C_VOL_UP &kp PLUS     &kp ASTRK  &kp N4     &kp N5     &kp N6   &kp ENTER
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│ CAPS     │          │  BRIDWN  │  BRIUP   │  !       │   │  0       │  1       │  2       │  3       │  L3      │
+            &kp CAPS   &trans  &kp C_BRI_DN &kp C_BRI_UP &kp EXCL      &kp N0     &kp N1     &kp N2     &kp N3     &to 3
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &lts 2 0   &sk LSHFT      &sk LCTRL  &lts 1 2
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
+
+        /* Layer 3
+         *
+         * Defined twice, once as a toggleable layer and once as a conditional layer.
+         */
+
+
+        // We have to add e copy of layer 3 so we can switch to it with &to 3, 
+        layer_3_toggleable {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│ ESC      │   Q      │   UP     │          │PROFILE 0 │   │          │          │          │          │  BCKSPC  │
+           &kp ESC      &kp Q      &kp UP     &trans    &bt BT_SEL 0   CA(H)      CA(J)      CA(K)      CA(L)      &kp BSPC
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│ TAB      │   LEFT   │   DOWN   │   RIGHT  │PROFILE 1 │   │  H       │  J       │  K       │  L       │  ENTER   │
+          &kp TAB       &kp LEFT   &kp DOWN   &kp RIGHT &bt BT_SEL 1   &kp H      &kp J      &kp K      &kp L      &kp ENTER
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
+            &trans     CA(A)       &trans    &bt BT_CLR &bt BT_SEL 2   &trans     CA(SEMI)   CA(U)      CA(I)      &to 4
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &to 0      &sk LSHFT      &sk LCTRL     &none
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
+
+        // layer 3 for conditional layer switching
+        layer_3 {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│ ESC      │   Q      │   UP     │          │PROFILE 0 │   │          │          │          │          │  BCKSPC  │
+           &kp ESC      &kp Q      &kp UP     &trans    &bt BT_SEL 0   CA(H)      CA(J)      CA(K)      CA(L)      &kp BSPC
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│ TAB      │   LEFT   │   DOWN   │   RIGHT  │PROFILE 1 │   │  H       │  J       │  K       │  L       │  ENTER   │
+          &kp TAB       &kp LEFT   &kp DOWN   &kp RIGHT &bt BT_SEL 1   &kp H      &kp J      &kp K      &kp L      &kp ENTER
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
+            &trans     CA(A)       &trans    &bt BT_CLR &bt BT_SEL 2   &trans     CA(SEMI)   CA(U)      CA(I)      &to 4
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &to 0      &sk LSHFT      &sk LCTRL     &none
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
+        
+
+        
+
+        layer_4 {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│ RESET    │          │          │          │PROFILE 0 │   │          │          │          │          │  RESET   │
+           &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &trans     &trans     &trans     &trans    &sys_reset
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│BOOTLOADER│          │          │          │PROFILE 1 │   │          │          │          │          │BOOTLOADER│
+          &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT &bootloader
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
+            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &trans     &trans     &trans     &trans     &none
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &to 0      &trans         &trans     &none
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
+        layer_2_copy {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  ESC     │play/pause│  <<      │  >>      │  -       │   │  ^       │  7       │  8       │  9       │  BCKSPC  │
@@ -102,7 +197,7 @@
             >;
         };
 
-        tri_layer {
+        layer_3_copy {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│ RESET    │          │          │          │PROFILE 0 │   │          │          │          │          │  RESET   │
@@ -118,5 +213,6 @@
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
+        
     };
 };

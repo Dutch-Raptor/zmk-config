@@ -12,7 +12,9 @@
 # define PIPEEND &qt END PIPE
 # define CA(x) &kp LC(LA(x))
 
-
+&sl {
+    release-after-ms = <1000>;
+};
 
 / {
     behaviors {
@@ -79,7 +81,7 @@
         //│  V       │  W       │  D       │  J       │  Q       │   │  B       │  H       │ / ?      │  . >     │  X       │
             &kp V      &kp W      &kp D      &kp J      &kp Q          &kp B      &kp H      &kp FSLH   &kp DOT    &kp X
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                          &qlt 2 SPACE  &sk LSHFT     &sk LCTRL  &lts 1 1
+                                          &qlt 2 SPACE  &sk LSHFT     &sk LCTRL  &sl 1
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -96,7 +98,7 @@
         //│ CAPS     │  `       │  {       │  }       │ '|'/END  │   │ _        │ !        │ @        │ \#       │  L3      │
            &caps_word  &kp GRAVE  &kp LBRC   &kp RBRC   PIPEEND        &kp UNDER  &kp EXCL  &kp AT      &kp HASH   &to 3
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &lts 2 0      &sk LSHFT   &sk LCTRL  &lts 1 2
+                                             &sl 2        &sk LSHFT   &sk LCTRL  &sl 1
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };

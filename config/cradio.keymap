@@ -8,7 +8,7 @@
 // Home row mods macro
 #define MEH (LA(LC(LSFT)))
 
-# define BSLHHOME &qt HOME BSLH
+# define BSLHHOME &qt HOME BSLH   
 # define PIPEEND &qt END PIPE
 # define CA(x) &kp LC(LA(x))
 
@@ -113,10 +113,10 @@
         //│  TAB     │  . (KP)  │  VOLDWN  │  VOLUP   │  +       │   │  *       │  4       │  5       │  6       │  ENTER   │
             &kp TAB    &kp KP_DOT &kp C_VOL_DN &kp C_VOL_UP &kp PLUS     &kp ASTRK  &kp N4     &kp N5     &kp N6   &kp ENTER
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ CAPS     │          │  BRIDWN  │  BRIUP   │  !       │   │  0       │  1       │  2       │  3       │  L3      │
-            &kp CAPS   &trans  &kp C_BRI_DN &kp C_BRI_UP &kp EXCL      &kp N0     &kp N1     &kp N2     &kp N3     &to 3
+        //│ CAPS     │          │          │          │  !       │   │  0       │  1       │  2       │  3       │  L3      │
+            &kp CAPS   &sl 5      &kp DEL    &none       &kp EXCL      &kp N0     &kp N1     &kp N2     &kp N3     &to 3
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &lts 2 0   &sk LSHFT      &sk LCTRL  &lts 1 2
+                                             &sl 2      &sk LSHFT      &sk LCTRL  &sl 1
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -163,58 +163,21 @@
             >;
         };
         
-
-        
-
-        layer_4 {
+        layer_5 {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│ RESET    │          │          │          │PROFILE 0 │   │          │          │          │          │  RESET   │
-           &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &trans     &trans     &trans     &trans    &sys_reset
+           &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &kp F12    &kp F7     &kp F8     &kp F9    &sys_reset
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│BOOTLOADER│          │          │          │PROFILE 1 │   │          │          │          │          │BOOTLOADER│
-          &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT &bootloader
+          &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &kp F11    &kp F4     &kp F5     &kp F6   &bootloader
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
-            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &trans     &trans     &trans     &trans     &none
+            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &kp F10    &kp F1     &kp F2     &kp F3     &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &to 0      &trans         &trans     &none
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
-        layer_2_copy {
-            bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  ESC     │play/pause│  <<      │  >>      │  -       │   │  ^       │  7       │  8       │  9       │  BCKSPC  │
-            &kp ESC    &kp C_PP  &kp C_PREV &kp C_NEXT  &kp MINUS      &kp CARET  &kp N7     &kp N8     &kp N9     &kp BSPC
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  !       │  . (KP)  │  VOLDWN  │  VOLUP   │  +       │   │  *       │  4       │  5       │  6       │  ENTER   │
-            &kp EXCL &kp KP_DOT &kp C_VOL_DN &kp C_VOL_UP &kp PLUS     &kp ASTRK  &kp N4     &kp N5     &kp N6   &kp ENTER
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ CAPS     │          │  BRIDWN  │  BRIUP   │  !       │   │  0       │  1       │  2       │  3       │  L3      │
-            &kp CAPS   &trans  &kp C_BRI_DN &kp C_BRI_UP &kp EXCL      &kp N0     &kp N1     &kp N2     &kp N3     &to 3
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &to 0      &sk LSHFT      &sk LCTRL     &none
-        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
-            >;
-        };
-
-        layer_3_copy {
-            bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│ RESET    │          │          │          │PROFILE 0 │   │          │          │          │          │  RESET   │
-           &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &trans     &trans     &trans     &trans    &sys_reset
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│BOOTLOADER│          │          │          │PROFILE 1 │   │          │          │          │          │BOOTLOADER│
-          &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT &bootloader
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
-            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &trans     &trans     &trans     &trans     &none
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &to 0      &trans         &trans     &none
-        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
-            >;
-        };
-        
     };
 };

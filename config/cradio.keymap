@@ -13,7 +13,7 @@
 # define CA(x) &kp LC(LA(x))
 
 &sl {
-    release-after-ms = <1000>;
+    release-after-ms = <800>;
 };
 
 / {
@@ -33,7 +33,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
-            label = "QUICK_TAP";
+            label = "QUICK_LAYER_TAP";
             bindings = <&mo>, <&kp>;
         };
         hmr: home-row-mods {
@@ -63,7 +63,7 @@
         compatible = "zmk,conditional-layers";
         tri_layer {
             if-layers = <1 2>;
-            then-layer = <4>;
+            then-layer = <3>;
         };
     };
 
@@ -81,7 +81,7 @@
         //│  V       │  W       │  D       │  J       │  Q       │   │  B       │  H       │ / ?      │  . >     │  X       │
             &kp V      &kp W      &kp D      &kp J      &kp Q          &kp B      &kp H      &kp FSLH   &kp DOT    &kp X
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                          &qlt 2 SPACE  &sk LSHFT     &sk LCTRL  &sl 1
+                                          &qlt 2 SPACE  &sk LSHFT      &kp LCTRL  &sl 1
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -95,8 +95,8 @@
         //│ TAB      │  '       │  (       │  )       │ +        │   │ -        │ $        │ %        │ ^        │  ENTER   │
             &kp TAB    &kp SQT    &kp LPAR   &kp RPAR   &kp PLUS       &kp MINUS  &kp DLLR  &kp PERCENT &kp CARET  &kp ENTER
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ CAPS     │  `       │  {       │  }       │ '|'/END  │   │ _        │ !        │ @        │ \#       │  L3      │
-           &caps_word  &kp GRAVE  &kp LBRC   &kp RBRC   PIPEEND        &kp UNDER  &kp EXCL  &kp AT      &kp HASH   &to 3
+        //│ CAPS     │  `       │  {       │  }       │ '|'/END  │   │ _        │ !        │ @        │ \#       │  :       │
+           &caps_word  &kp GRAVE  &kp LBRC   &kp RBRC   PIPEEND        &kp UNDER  &kp EXCL  &kp AT      &kp HASH   &kp COLON
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &sl 2        &sk LSHFT   &sk LCTRL  &sl 1
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
@@ -113,37 +113,14 @@
         //│  TAB     │  . (KP)  │  VOLDWN  │  VOLUP   │  +       │   │  *       │  4       │  5       │  6       │  ENTER   │
             &kp TAB    &kp KP_DOT &kp C_VOL_DN &kp C_VOL_UP &kp PLUS     &kp ASTRK  &kp N4     &kp N5     &kp N6   &kp ENTER
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ CAPS     │          │          │          │  !       │   │  0       │  1       │  2       │  3       │  L3      │
-            &kp CAPS   &sl 5      &kp DEL    &none       &kp EXCL      &kp N0     &kp N1     &kp N2     &kp N3     &to 3
+        //│ CAPS     │          │          │          │          │   │  0       │  1       │  2       │  3       │          │
+            &kp CAPS   &sl 5      &kp DEL    &none       &none         &kp N0     &kp N1     &kp N2     &kp N3     &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &sl 2      &sk LSHFT      &sk LCTRL  &sl 1
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
 
-        /* Layer 3
-         *
-         * Defined twice, once as a toggleable layer and once as a conditional layer.
-         */
-
-
-        // We have to add e copy of layer 3 so we can switch to it with &to 3, 
-        layer_3_toggleable {
-            bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│ ESC      │   Q      │   UP     │          │PROFILE 0 │   │          │          │          │          │  BCKSPC  │
-           &kp ESC      &kp Q      &kp UP     &trans    &bt BT_SEL 0   CA(H)      CA(J)      CA(K)      CA(L)      &kp BSPC
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ TAB      │   LEFT   │   DOWN   │   RIGHT  │PROFILE 1 │   │  H       │  J       │  K       │  L       │  ENTER   │
-          &kp TAB       &kp LEFT   &kp DOWN   &kp RIGHT &bt BT_SEL 1   &kp H      &kp J      &kp K      &kp L      &kp ENTER
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
-            &trans     CA(A)       &trans    &bt BT_CLR &bt BT_SEL 2   &trans     CA(SEMI)   CA(U)      CA(I)      &to 4
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &to 0      &sk LSHFT      &sk LCTRL     &none
-        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
-            >;
-        };
 
         // layer 3 for conditional layer switching
         layer_3 {
@@ -156,7 +133,7 @@
           &kp TAB       &kp LEFT   &kp DOWN   &kp RIGHT &bt BT_SEL 1   &kp H      &kp J      &kp K      &kp L      &kp ENTER
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
-            &trans     CA(A)       &trans    &bt BT_CLR &bt BT_SEL 2   &trans     CA(SEMI)   CA(U)      CA(I)      &to 4
+            &trans     CA(A)       &trans    &bt BT_CLR &bt BT_SEL 2   &trans     CA(SEMI)   CA(U)      CA(I)      &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &to 0      &sk LSHFT      &sk LCTRL     &none
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯

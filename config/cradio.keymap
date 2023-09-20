@@ -150,9 +150,9 @@
           &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &kp F11    &kp F4     &kp F5     &kp F6   &bootloader
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
-            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &kp F10    &kp F1     &kp F2     &kp F3     &none
+            &trans     &sl 4      &trans    &bt BT_CLR &bt BT_SEL 2    &kp F10    &kp F1     &kp F2     &kp F3     &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &to 0      &trans         &trans     &none
+                                             &sl 2      &trans         &trans     &none
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };

@@ -12,17 +12,13 @@
 # define PIPEEND &qt END PIPE
 # define CA(x) &kp LC(LA(x))
 
-&sl {
-    release-after-ms = <800>;
-};
-
 / {
     behaviors {
         qt: quick-tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <200>;
+            tapping-term-ms = <300>;
             quick-tap-ms = <175>;
             label = "QUICK_TAP";
             bindings = <&kp>, <&kp>;
@@ -40,7 +36,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <400>;
+            tapping-term-ms = <300>;
             quick-tap-ms = <175>;
             label = "HOME_ROW_MODS";
             bindings = <&kp>, <&kp>;
@@ -76,12 +72,12 @@
             &kp Y      &kp C      &kp L      &kp M      &kp K          &kp Z      &kp F      &kp U      &kp COMMA   &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  I       │  S       │  R       │  T       │  G       │   │  P       │  N       │  E       │  A       │  O       │
-            &kp I      &kp S    &hmr LALT R &hmr LGUI T  &kp G          &kp P   &hmr RGUI N &hmr RALT E &kp A      &kp O
+       &hmr LSHFT I &hmr LCTRL S &hmr LALT R &hmr LGUI T  &kp G          &kp P   &hmr RGUI N &hmr RALT E &hmr RCTRL A &hmr RSHFT O
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  V       │  W       │  D       │  J       │  Q       │   │  B       │  H       │ / ?      │  . >     │  X       │
             &kp V      &kp W      &kp D      &kp J      &kp Q          &kp B      &kp H      &kp FSLH   &kp DOT    &kp X
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                          &qlt 2 SPACE  &sk LSHFT      &kp LCTRL  &sl 1
+                                          &qlt 2 SPACE  &sk LSHFT      &kp LCTRL  &mo 1
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -98,7 +94,7 @@
         //│ CAPS     │  `       │  {       │  }       │ '|'/END  │   │ _        │ !        │ @        │ \#       │  :       │
            &caps_word  &kp GRAVE  &kp LBRC   &kp RBRC   PIPEEND        &kp UNDER  &kp EXCL  &kp AT      &kp HASH   &kp COLON
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &sl 2        &sk LSHFT   &sk LCTRL  &sl 1
+                                             &mo 2        &sk LSHFT   &sk LCTRL  &mo 1
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -114,9 +110,9 @@
             &kp TAB    &kp KP_DOT &kp C_VOL_DN &kp C_VOL_UP &kp PLUS     &kp ASTRK  &kp N4     &kp N5     &kp N6   &kp ENTER
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│ CAPS     │          │          │          │          │   │  0       │  1       │  2       │  3       │          │
-            &kp CAPS   &sl 4      &kp DEL    &none       &none         &kp N0     &kp N1     &kp N2     &kp N3     &none
+            &kp CAPS   &mo 4      &kp DEL    &none       &none         &kp N0     &kp N1     &kp N2     &kp N3     &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &sl 2      &sk LSHFT      &sk LCTRL  &sl 1
+                                             &mo 2      &sk LSHFT      &sk LCTRL  &mo 1
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -150,9 +146,9 @@
           &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &kp F11    &kp F4     &kp F5     &kp F6   &bootloader
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
-            &trans     &sl 4      &trans    &bt BT_CLR &bt BT_SEL 2    &kp F10    &kp F1     &kp F2     &kp F3     &none
+            &trans     &mo 4      &trans    &bt BT_CLR &bt BT_SEL 2    &kp F10    &kp F1     &kp F2     &kp F3     &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &sl 2      &trans         &trans     &none
+                                             &mo 2      &trans         &trans     &none
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };

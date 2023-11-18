@@ -7,6 +7,8 @@
 
 // Home row mods macro
 #define MEH (LA(LC(LSFT)))
+#
+# define hmrm(a, b, c, d, e, f, g, h, i, j) &hmr LSHFT a &hmr LCTRL b &hmr LALT c &hmr LGUI d &kp e &kp f &hmr RGUI g &hmr RALT h &hmr RCTRL i &hmr RSHFT j
 
 # define BSLHHOME &qt HOME BSLH   
 # define PIPEEND &qt END PIPE
@@ -72,7 +74,7 @@
             &kp Y      &kp C      &kp L      &kp M      &kp K          &kp Z      &kp F      &kp U      &kp COMMA   &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  I       │  S       │  R       │  T       │  G       │   │  P       │  N       │  E       │  A       │  O       │
-       &hmr LSHFT I &hmr LCTRL S &hmr LALT R &hmr LGUI T  &kp G          &kp P   &hmr RGUI N &hmr RALT E &hmr RCTRL A &hmr RSHFT O
+       hmrm( I,         S,         R,         T,         G,             P,         N,         E,         A,         O)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  V       │  W       │  D       │  J       │  Q       │   │  B       │  H       │ / ?      │  . >     │  X       │
             &kp V      &kp W      &kp D      &kp J      &kp Q          &kp B      &kp H      &kp FSLH   &kp DOT    &kp X
@@ -89,7 +91,7 @@
             &kp ESC    &kp DQT    &kp LBKT   &kp RBKT   BSLHHOME       &kp EQUAL  &kp AMPS   &kp ASTRK  &kp SEMI   &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│ TAB      │  '       │  (       │  )       │ +        │   │ -        │ $        │ %        │ ^        │  ENTER   │
-            &kp TAB    &kp SQT    &kp LPAR   &kp RPAR   &kp PLUS       &kp MINUS  &kp DLLR  &kp PERCENT &kp CARET  &kp ENTER
+        hmrm(TAB,        SQT,       LPAR,     RPAR,     PLUS,      MINUS,     DOLLAR,    PERCENT,     CARET,        ENTER)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│ CAPS     │  `       │  {       │  }       │ '|'/END  │   │ _        │ !        │ @        │ \#       │  :       │
            &caps_word  &kp GRAVE  &kp LBRC   &kp RBRC   PIPEEND        &kp UNDER  &kp EXCL  &kp AT      &kp HASH   &kp COLON
@@ -107,7 +109,7 @@
             &kp ESC    &kp C_PP  &kp C_PREV &kp C_NEXT  &kp MINUS      &kp CARET  &kp N7     &kp N8     &kp N9     &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  TAB     │  . (KP)  │  VOLDWN  │  VOLUP   │  +       │   │  *       │  4       │  5       │  6       │  ENTER   │
-            &kp TAB    &kp KP_DOT &kp C_VOL_DN &kp C_VOL_UP &kp PLUS     &kp ASTRK  &kp N4     &kp N5     &kp N6   &kp ENTER
+        hmrm( TAB,       DOT,       C_VOL_DN,  C_VOL_UP,  PLUS,          ASTRK,     N4,        N5,        N6,        ENTER)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│ CAPS     │          │          │          │          │   │  0       │  1       │  2       │  3       │          │
             &kp CAPS   &mo 4      &kp DEL    &none       &none         &kp N0     &kp N1     &kp N2     &kp N3     &none

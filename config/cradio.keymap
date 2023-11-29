@@ -45,7 +45,6 @@
         };
         sk {
             quick-release;
-            ignore-modifiers;
         };
         lts: layer-tap-switch {
                 compatible = "zmk,behavior-hold-tap";
